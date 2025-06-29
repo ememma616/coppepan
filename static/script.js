@@ -14,33 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuContainer = document.getElementById("menu");
   const activeCols = new Set(Object.keys(labelMap));
 
-  function updateColumnVisibility() {
+  function updateRowVisibility() {
     const headers = table.querySelectorAll("thead th");
-    const rows = table.querySelectorAll("tr");
+    const rows = table.querySelectorAll("tbody tr");
 
-    // 対象の列インデックスを取得
     const colIndexes = {};
     headers.forEach((th, index) => {
-      const classList = th.classList;
       Object.keys(labelMap).forEach((key) => {
-        if (classList.contains(`col-${key}`)) {
+        if (th.classList.contains(`col-${key}`)) {
           colIndexes[key] = index;
         }
       });
     });
 
-    // 各行の表示・非表示を判定
-    rows.forEach((row, rowIndex) => {
+    rows.forEach((row) => {
       let shouldHide = false;
 
-      Object.keys(labelMap).forEach((key) => {
-        const colIndex = colIndexes[key];
-        if (colIndex === undefined) return;
-
-        const cell = row.cells[colIndex];
+      Object.keys(colIndexes).forEach((key) => {
         if (!activeCols.has(key)) {
-          const isEmpty = !cell || cell.textContent.trim() === "";
-          if (isEmpty) {
+          const cell = row.cells[colIndexes[key]];
+          if (!cell || cell.textContent.trim() === "") {
             shouldHide = true;
           }
         }
@@ -50,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ボタン生成
   Object.keys(labelMap).forEach((key) => {
     const button = document.createElement("button");
     button.textContent = labelMap[key];
@@ -64,12 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         activeCols.add(key);
       }
-      updateColumnVisibility();
+      updateRowVisibility();
     });
 
     menuContainer.appendChild(button);
   });
 
-  // 初期表示時の行判定
-  updateColumnVisibility();
+  updateRowVisibility();
 });
