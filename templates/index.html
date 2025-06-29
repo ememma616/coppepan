@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>換字式暗号一覧表</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <div class="splash-screen">
+    <h1 class="splash-text">cryptography</h1>
+  </div>
+
+  <nav class="navbar">
+    <button class="menu-toggle" aria-label="メニュー開閉">☰</button>
+    <div class="menu-label">ON/OFF</div>
+  </nav>
+
+  <div class="menu hidden" id="menu">
+    <button class="close-button" id="close-menu">×</button>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="cipher-table">
+      <thead>
+        <tr>
+          <th class="col-digit">数字</th>
+          <th class="col-alphabet">アルファベット</th>
+          <th class="col-element">元素記号</th>
+          <th class="col-greek">ギリシャ文字</th>
+          <th class="col-hiragana">ひらがな</th>
+          <th class="col-eto">干支</th>
+          <th class="col-italian">イタリア語</th>
+          <th class="col-russian">ロシア語</th>
+          <th class="col-spanish">スペイン語</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td class="col-digit">{{ row.digit }}</td>
+          <td class="col-alphabet">{{ row.alphabet }}</td>
+          <td class="col-element">{{ row.element }}</td>
+          <td class="col-greek">{{ row.greek }}</td>
+          <td class="col-hiragana">{{ row.hiragana }}</td>
+          <td class="col-eto">{{ row.eto }}</td>
+          <td class="col-italian">{{ row.italian }}</td>
+          <td class="col-russian">{{ row.russian }}</td>
+          <td class="col-spanish">{{ row.spanish }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const columns = {{ keys | tojson }};
+  </script>
+</body>
+</html>
