@@ -1,9 +1,0 @@
-.menu {
-  all: initial;
-  position: fixed;
-  top: 3em;
-  right: 1em;
-  background: pink;
-  display: flex;
-  flex-direction: column;
-}
