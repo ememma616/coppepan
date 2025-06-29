@@ -2,68 +2,163 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>トップページ</title>
-  <style>
-    /* ベースリセット */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'mameron', sans-serif, sans-serif;
-      background: #F4EBDA;
-      color: #262724;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-      text-align: center;
-      padding: 1em;
-    }
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5em;
-      color: #A6B5A5;
-    }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2em;
-      color: #5B5B4F;
-    }
-    a.button {
-      display: inline-block;
-      padding: 0.8em 2em;
-      font-size: 1.2rem;
-      color: #F4EBDA;
-      background-color: #A6B5A5;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(166, 181, 165, 0.5);
-      transition: background-color 0.3s ease;
-    }
-    a.button:hover,
-    a.button:focus {
-      background-color: #8B9B8A;
-      outline: none;
-      box-shadow: 0 6px 12px rgba(139, 155, 138, 0.7);
-    }
-    footer {
-      position: absolute;
-      bottom: 1em;
-      font-size: 0.9rem;
-      color: #999;
-    }
-  </style>
+  <title>換字式暗号一覧表</title>
+  <link rel="stylesheet" href="static/style.css" />
+  <link rel="stylesheet" href="static/splash.css" />
+  <script src="static/script.js" defer></script>
 </head>
 <body>
-  <h1></h1>
-  <p>LINK</p>
-  <a href="templates/index.html" class="button" aria-label="換字式暗号一覧表ページへ移動">一覧表を見る</a>
+  <div class="splash-screen">
+    <h1 class="splash-text">cryptography</h1>
+  </div>
 
-  <footer>
-    &copy; 2025 Misato Fukami
-  </footer>
+  <nav class="navbar">
+    <button class="menu-toggle" aria-label="メニュー開閉">☰</button>
+    <div class="menu-label">ON/OFF</div>
+  </nav>
+
+  <div class="menu hidden" id="menu">
+    <button class="close-button" id="close-menu">×</button>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="cipher-table">
+      <thead>
+        <tr>
+          <th class="col-digit">数字</th>
+          <th class="col-alphabet">アルファベット</th>
+          <th class="col-element">元素記号</th>
+          <th class="col-greek">ギリシャ文字</th>
+          <th class="col-hiragana">ひらがな</th>
+          <th class="col-eto">干支</th>
+          <th class="col-italian">イタリア語</th>
+          <th class="col-russian">ロシア語</th>
+          <th class="col-spanish">スペイン語</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>A</td><td>H</td><td>α</td><td>あ</td><td>子</td><td>A</td><td>А</td><td>A</td></tr>
+        <tr><td>2</td><td>B</td><td>He</td><td>β</td><td>い</td><td>丑</td><td>B</td><td>Б</td><td>B</td></tr>
+        <tr><td>3</td><td>C</td><td>Li</td><td>γ</td><td>う</td><td>寅</td><td>C</td><td>В</td><td>C</td></tr>
+        <tr><td>4</td><td>D</td><td>Be</td><td>δ</td><td>え</td><td>卯</td><td>D</td><td>Г</td><td>D</td></tr>
+        <tr><td>5</td><td>E</td><td>B</td><td>ε</td><td>お</td><td>辰</td><td>E</td><td>Д</td><td>E</td></tr>
+        <tr><td>6</td><td>F</td><td>C</td><td>ζ</td><td>か</td><td>巳</td><td>F</td><td>Е</td><td>F</td></tr>
+        <tr><td>7</td><td>G</td><td>N</td><td>η</td><td>き</td><td>午</td><td>G</td><td>Ё</td><td>G</td></tr>
+        <tr><td>8</td><td>H</td><td>O</td><td>θ</td><td>く</td><td>未</td><td>H</td><td>Ж</td><td>H</td></tr>
+        <tr><td>9</td><td>I</td><td>F</td><td>ι</td><td>け</td><td>申</td><td>I</td><td>З</td><td>I</td></tr>
+        <tr><td>10</td><td>J</td><td>Ne</td><td>κ</td><td>こ</td><td>酉</td><td>L</td><td>И</td><td>J</td></tr>
+                 <tr><td>11</td><td>K</td><td>Na</td><td>λ</td><td>さ</td><td>戌</td><td>M</td><td>Й</td><td>K</td></tr>
+        <tr><td>12</td><td>L</td><td>Mg</td><td>μ</td><td>し</td><td>亥</td><td>N</td><td>К</td><td>L</td></tr>
+        <tr><td>13</td><td>M</td><td>Al</td><td>ν</td><td>す</td><td></td><td>O</td><td>Л</td><td>M</td></tr>
+        <tr><td>14</td><td>N</td><td>Si</td><td>ξ</td><td>せ</td><td></td><td>P</td><td>М</td><td>N</td></tr>
+        <tr><td>15</td><td>O</td><td>P</td><td>ο</td><td>そ</td><td></td><td>Q</td><td>Н</td><td>Ñ</td></tr>
+        <tr><td>16</td><td>P</td><td>S</td><td>π</td><td>た</td><td></td><td>R</td><td>О</td><td>O</td></tr>
+        <tr><td>17</td><td>Q</td><td>Cl</td><td>ρ</td><td>ち</td><td></td><td>S</td><td>П</td><td>P</td></tr>
+        <tr><td>18</td><td>R</td><td>Ar</td><td>σ</td><td>つ</td><td></td><td>T</td><td>Р</td><td>Q</td></tr>
+        <tr><td>19</td><td>S</td><td>K</td><td>τ</td><td>て</td><td></td><td>U</td><td>С</td><td>R</td></tr>
+        <tr><td>20</td><td>T</td><td>Ca</td><td>υ</td><td>と</td><td></td><td>V</td><td>Т</td><td>S</td></tr>
+                <tr><td>21</td><td>U</td><td>Sc</td><td>φ</td><td>な</td><td></td><td>Z</td><td>У</td><td>T</td></tr>
+        <tr><td>22</td><td>V</td><td>Ti</td><td>χ</td><td>に</td><td></td><td></td><td>Ф</td><td>U</td></tr>
+        <tr><td>23</td><td>W</td><td>V</td><td>ψ</td><td>ぬ</td><td></td><td></td><td>Х</td><td>V</td></tr>
+        <tr><td>24</td><td>X</td><td>Cr</td><td>ω</td><td>ね</td><td></td><td></td><td>Ц</td><td>W</td></tr>
+        <tr><td>25</td><td>Y</td><td>Mn</td><td></td><td>の</td><td></td><td></td><td>Ч</td><td>X</td></tr>
+        <tr><td>26</td><td>Z</td><td>Fe</td><td></td><td>は</td><td></td><td></td><td>Ш</td><td>Y</td></tr>
+        <tr><td>27</td><td></td><td>Co</td><td></td><td>ひ</td><td></td><td></td><td>Щ</td><td>Z</td></tr>
+        <tr><td>28</td><td></td><td>Ni</td><td></td><td>ふ</td><td></td><td></td><td>Ъ</td><td></td></tr>
+        <tr><td>29</td><td></td><td>Cu</td><td></td><td>へ</td><td></td><td></td><td>Ы</td><td></td></tr>
+        <tr><td>30</td><td></td><td>Zn</td><td></td><td>ほ</td><td></td><td></td><td>Ь</td><td></td></tr>
+        <tr><td>31</td><td></td><td>Ga</td><td></td><td>ま</td><td></td><td></td><td>Э</td><td></td></tr>
+        <tr><td>32</td><td></td><td>Ge</td><td></td><td>み</td><td></td><td></td><td>Ю</td><td></td></tr>
+        <tr><td>33</td><td></td><td>As</td><td></td><td>む</td><td></td><td></td><td>Я</td><td></td></tr>
+        <tr><td>34</td><td></td><td>Se</td><td></td><td>め</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>35</td><td></td><td>Br</td><td></td><td>も</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>36</td><td></td><td>Kr</td><td></td><td>や</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>37</td><td></td><td>Rb</td><td></td><td>ゆ</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>38</td><td></td><td>Sr</td><td></td><td>よ</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>39</td><td></td><td>Y</td><td></td><td>ら</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>40</td><td></td><td>Zr</td><td></td><td>り</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>41</td><td></td><td>Nb</td><td></td><td>る</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>42</td><td></td><td>Mo</td><td></td><td>れ</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>43</td><td></td><td>Tc</td><td></td><td>ろ</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>44</td><td></td><td>Ru</td><td></td><td>わ</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>45</td><td></td><td>Rh</td><td></td><td>を</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>46</td><td></td><td>Pd</td><td></td><td>ん</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>47</td><td></td><td>Ag</td><td></td><td></td><td>子</td><td></td><td></td><td></td></tr>
+        <tr><td>48</td><td></td><td>Cd</td><td></td><td></td><td>丑</td><td></td><td></td><td></td></tr>
+        <tr><td>49</td><td></td><td>In</td><td></td><td></td><td>寅</td><td></td><td></td><td></td></tr>
+        <tr><td>50</td><td></td><td>Sn</td><td></td><td></td><td>卯</td><td></td><td></td><td></td></tr>
+        <tr><td>51</td><td></td><td>Sb</td><td></td><td></td><td>辰</td><td></td><td></td><td></td></tr>
+        <tr><td>52</td><td></td><td>Te</td><td></td><td></td><td>巳</td><td></td><td></td><td></td></tr>
+        <tr><td>53</td><td></td><td>I</td><td></td><td></td><td>午</td><td></td><td></td><td></td></tr>
+        <tr><td>54</td><td></td><td>Xe</td><td></td><td></td><td>未</td><td></td><td></td><td></td></tr>
+        <tr><td>55</td><td></td><td>Cs</td><td></td><td></td><td>申</td><td></td><td></td><td></td></tr>
+        <tr><td>56</td><td></td><td>Ba</td><td></td><td></td><td>酉</td><td></td><td></td><td></td></tr>
+        <tr><td>57</td><td></td><td>La</td><td></td><td></td><td>戌</td><td></td><td></td><td></td></tr>
+        <tr><td>58</td><td></td><td>Ce</td><td></td><td></td><td>亥</td><td></td><td></td><td></td></tr>
+        <tr><td>59</td><td></td><td>Pr</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>60</td><td></td><td>Nd</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>61</td><td></td><td>Pm</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>62</td><td></td><td>Sm</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>63</td><td></td><td>Eu</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>64</td><td></td><td>Gd</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>65</td><td></td><td>Tb</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>66</td><td></td><td>Dy</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>67</td><td></td><td>Ho</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>68</td><td></td><td>Er</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>69</td><td></td><td>Tm</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>70</td><td></td><td>Yb</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>71</td><td></td><td>Lu</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>72</td><td></td><td>Hf</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>73</td><td></td><td>Ta</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>74</td><td></td><td>W</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>75</td><td></td><td>Re</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>76</td><td></td><td>Os</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>77</td><td></td><td>Ir</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>78</td><td></td><td>Pt</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>79</td><td></td><td>Au</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>80</td><td></td><td>Hg</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>81</td><td></td><td>Tl</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>82</td><td></td><td>Pb</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>83</td><td></td><td>Bi</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>84</td><td></td><td>Po</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>85</td><td></td><td>At</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>86</td><td></td><td>Rn</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>87</td><td></td><td>Fr</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>88</td><td></td><td>Ra</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>89</td><td></td><td>Ac</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>90</td><td></td><td>Th</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>91</td><td></td><td>Pa</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>92</td><td></td><td>U</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>93</td><td></td><td>Np</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>94</td><td></td><td>Pu</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>95</td><td></td><td>Am</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>96</td><td></td><td>Cm</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>97</td><td></td><td>Bk</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>98</td><td></td><td>Cf</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>99</td><td></td><td>Es</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>100</td><td></td><td>Fm</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>101</td><td></td><td>Md</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>102</td><td></td><td>No</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>103</td><td></td><td>Lr</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>104</td><td></td><td>Rf</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>105</td><td></td><td>Db</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>106</td><td></td><td>Sg</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>107</td><td></td><td>Bh</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>108</td><td></td><td>Hs</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>109</td><td></td><td>Mt</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>110</td><td></td><td>Ds</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>111</td><td></td><td>Rg</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>112</td><td></td><td>Cn</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>113</td><td></td><td>Nh</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>114</td><td></td><td>Fl</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>115</td><td></td><td>Mc</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>116</td><td></td><td>Lv</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>117</td><td></td><td>Ts</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>118</td><td></td><td>Og</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="static/script.js"></script>
 </body>
 </html>
