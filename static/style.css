@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'mameron';
+  src: url('Mamelon-4-Hi-Regular.otf') format('opentype');
+}
+
+body {
+  font-family: 'mameron', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f5;
+  color: #262724;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #A6B5A5;
+  padding: 0.5em 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  color: #262724;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-label {
+  margin-left: 0.8em;
+  font-weight: bold;
+  font-size: 1em;
+  color: #262724;
+}
+
+.menu {
+  position: fixed;
+  top: 2.5em; /* ハンバーガーメニューのバーにかぶるくらい上 */
+  right: 1em;
+  background-color: #F4EBDA;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  padding: 1em;
+  z-index: 2000; /* 最前面 */
+  display: none;
+  flex-direction: column;
+  gap: 0.5em;
+  min-width: 160px;
+}
+
+.menu.open {
+  display: flex;
+}
+
+.menu .close-button {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-bottom: 0.3em;
+  color: #262724;
+}
+
+.toggle-btn {
+  background-color: #A6B5A5;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  cursor: pointer;
+  font-size: 0.95em;
+  color: #F4EBDA;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.toggle-btn.inactive {
+  background-color: #E4C1B5;
+  color: #EAE6E1;
+}
+
+.table-wrapper {
+  margin-top: 4em; /* ナビバーの下に少し余裕 */
+  overflow-x: auto;
+  padding: 1em;
+  max-width: 100vw;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 300px;
+  table-layout: fixed; /* 均等割り */
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.7em 0.5em;
+  text-align: center;
+  white-space: normal; /* 折返し可 */
+  vertical-align: middle;
+  font-size: 1em;
+}
+
+thead th {
+  background-color: #e5e1d8;
+  position: static; /* スクロール追従なし */
+  padding: 0.7em 0.5em;
+  white-space: normal; /* 折返し可 */
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+tbody tr.hidden {
+  display: none;
+}
+
+/* 非表示列用のクラス */
+.col-hidden {
+  display: none;
+}
+
+/* スプラッシュ画面 */
+.splash-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #f5f5dc; /* クリーム色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-text {
+  font-family: 'mameron', sans-serif;
+  font-size: 3rem;
+  color: #555;
+  animation: splashPulse 2s ease forwards;
+}
+
+@keyframes splashPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
