@@ -16,8 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateRowVisibility() {
     const headers = table.querySelectorAll("thead th");
+    const theadRow = table.querySelector("thead tr");
     const rows = table.querySelectorAll("tbody tr");
 
+    // カラムインデックスの特定
     const colIndexes = {};
     headers.forEach((th, index) => {
       Object.keys(labelMap).forEach((key) => {
@@ -27,7 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    rows.forEach((row) => {
+    // まずヘッダー自体も1行の対象として扱う
+    const allRows = [theadRow, ...rows];
+
+    allRows.forEach((row) => {
       let shouldHide = false;
 
       Object.keys(colIndexes).forEach((key) => {
@@ -43,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // メニューボタンの生成
   Object.keys(labelMap).forEach((key) => {
     const button = document.createElement("button");
     button.textContent = labelMap[key];
