@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'mameron';
+  src: url('Mamelon-4-Hi-Regular.otf') format('opentype');
+}
+
+body {
+  font-family: 'mameron', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f5;
+  color: #262724;
+}
+
+/* === テーブル周辺だけ最小限の修正 === */
+
+.table-wrapper {
+  margin-top: 5em;
+  overflow-x: auto;
+  padding: 1em;
+  max-width: 100vw;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 0.5px solid #aaa;
+  text-align: center;
+  font-size: clamp(10px, 2.5vw, 14px);
+  width: auto;
+  padding: 0.2em;
+}
+
+thead th {
+  background-color: #e5e1d8;
+  font-weight: bold;
+}
+
+/* ================================
+   以下、他の要素（そのまま据え置き）
+================================ */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #A6B5A5;
+  padding: 0.5em 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  color: #262724;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-label {
+  margin-left: 0.8em;
+  font-weight: bold;
+  font-size: 1em;
+  color: #262724;
+}
+
+.menu {
+  position: fixed;
+  top: 2.5em;
+  right: 1em;
+  background-color: #F4EBDA;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  padding: 1em;
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  gap: 0.5em;
+  min-width: 160px;
+}
+
+.menu.open {
+  display: flex;
+}
+
+.menu .close-button {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-bottom: 0.3em;
+  color: #262724;
+}
+
+.toggle-btn {
+  background-color: #A6B5A5;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  cursor: pointer;
+  font-size: 0.95em;
+  color: #F4EBDA;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.toggle-btn.inactive {
+  background-color: #E4C1B5;
+  color: #EAE6E1;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+tbody tr.hidden {
+  display: none;
+}
+
+.col-hidden {
+  display: none;
+}
+
+/* スプラッシュ画面 */
+.splash-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #f5f5dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-text {
+  font-family: 'mameron', sans-serif;
+  font-size: 3rem;
+  color: #555;
+  animation: splashPulse 2s ease forwards;
+}
+
+@keyframes splashPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
