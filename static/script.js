@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 3600);
 
   const menuToggle = document.querySelector(".menu-toggle");
+  console.log("menuToggle:", menuToggle); //
   const menu = document.getElementById("menu");
   const closeBtn = document.getElementById("close-menu");
 
