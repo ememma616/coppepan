@@ -1,3 +1,7 @@
+
+console.log("JSファイル読み込まれました");
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const splash = document.querySelector(".splash-screen");
   const splashText = document.querySelector(".splash-text");
